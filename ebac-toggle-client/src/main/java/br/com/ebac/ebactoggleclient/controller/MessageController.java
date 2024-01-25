@@ -14,8 +14,14 @@ public class MessageController {
     @Value("${client.message:Oi, não tenho mensagem!}")
     private String message;
 
+    @Value("${client.ligadesliga:false}")
+    private boolean ligadesliga;
+
     @GetMapping
     public String getMessage() {
-        return this.message;
+        if(ligadesliga) {
+            return this.message;
+        }
+        return "Funcionalidade desligada";
     }
 }
